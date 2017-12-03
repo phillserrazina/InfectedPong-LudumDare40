@@ -11,6 +11,7 @@ public class AIPaddle : MonoBehaviour {
 	public float lerpTweak = 2f;
 
 	private Rigidbody2D rb;
+
 	private GameManager gameManager;
 
 	// Use this for initialization
@@ -23,13 +24,13 @@ public class AIPaddle : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () 
 	{
-		if(40 > gameManager.playerScore && gameManager.playerScore >= 20)
-		{
-			speed = 30f;
-		}
-		else if(gameManager.playerScore >= 40)
+		if(150 > gameManager.playerScore && gameManager.playerScore >= 75)
 		{
 			speed = 50f;
+		}
+		else if(gameManager.playerScore >= 150)
+		{
+			speed = 70f;
 		}
 
 		if(ball.transform.position.y > transform.position.y)

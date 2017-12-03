@@ -13,11 +13,10 @@ public class VirusPopScript : MonoBehaviour {
 	private int virusHP;
 	private int ramStealValue;
 
-	private int popUpRAMSteal = 50;
-	private int addRAMSteal = 75;
-	private int virusRAMSteal = 100;
+	private int popUpRAMSteal = 25;
+	private int addRAMSteal = 50;
+	private int virusRAMSteal = 75;
 
-	private PlayerScript player;
 	private VirusSpawner virusSpawner;
 	private GameManager gameManager;
 
@@ -25,7 +24,6 @@ public class VirusPopScript : MonoBehaviour {
 
 	void Start()
 	{
-		player = FindObjectOfType<PlayerScript> ();
 		virusSpawner = FindObjectOfType<VirusSpawner> ();
 		gameManager = FindObjectOfType<GameManager> ();
 
@@ -62,7 +60,7 @@ public class VirusPopScript : MonoBehaviour {
 	{
 		virusSpawner.virusCount--;
 
-		gameManager.playerOTScore += 2;
+		gameManager.playerOTScore += 3;
 
 		gameManager.ramValue += ramStealValue;
 	}

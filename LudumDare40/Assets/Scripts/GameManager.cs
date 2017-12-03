@@ -17,12 +17,9 @@ public class GameManager : MonoBehaviour {
 	public Text playerScoreText;
 	public Text playerOTScoreText;
 
-	private AudioManager audioManager;
-
 	void Start()
 	{
 		ramNumber = GameObject.Find ("RAMNumber").GetComponent<Text> ();
-		audioManager = FindObjectOfType<AudioManager> ();
 
 		StartCoroutine (IncreaseScoreOT ());
 	}

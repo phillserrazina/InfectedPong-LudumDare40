@@ -30,18 +30,33 @@ public class AudioManager : MonoBehaviour
 
 	void Start()
 	{
-		Play ("MainTheme");
+		audioIsOn = intToBool(PlayerPrefs.GetInt ("audioIsOn"));
+
+		if(SceneManager.GetActiveScene().name == "MenuScene")
+			Play ("MenuTheme");
+		if(SceneManager.GetActiveScene().name == "GameScene")
+			Play ("MainTheme");
+		if(SceneManager.GetActiveScene().name == "HowToPlayScene")
+			Play ("MainTheme");
+		if(SceneManager.GetActiveScene().name == "GameOverScene")
+			Play ("MenuTheme");
 	}
 
 	void Update()
 	{
-		if(audioIsOn)
+		if(SceneManager.GetActiveScene().name == "MenuScene" || SceneManager.GetActiveScene().name == "GameScene") 
 		{
-			AudioListener.pause = false;
-		}
-		else
-		{
-			AudioListener.pause = true;
+			if (audioIsOn) {
+				AudioListener.pause = false;
+
+				soundButtonOn.SetActive (true);
+				soundButtonOff.SetActive (false);
+			} else {
+				AudioListener.pause = true;
+
+				soundButtonOn.SetActive (false);
+				soundButtonOff.SetActive (true);
+			}
 		}
 	}
 
@@ -65,17 +80,34 @@ public class AudioManager : MonoBehaviour
 		if (audioIsOn == true) 
 		{
 			audioIsOn = false;
-
-			soundButtonOn.SetActive (false);
-			soundButtonOff.SetActive (true);
 		}
 		else 
 		{
 			audioIsOn = true;
-
-			soundButtonOn.SetActive (true);
-			soundButtonOff.SetActive (false);
 		}
+	}
+
+	int boolToInt(bool val)
+	{
+		if (val)
+			return 1;
+		else
+			return 0;
+	}
+
+
+	bool intToBool(int val)
+	{
+		if (val != 0)
+			return true;
+		else
+			return false;
+	}
+
+
+	void OnDestroy()
+	{
+		PlayerPrefs.SetInt ("audioIsOn", boolToInt(audioIsOn));
 	}
 
 }

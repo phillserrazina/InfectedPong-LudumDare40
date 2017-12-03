@@ -39,6 +39,18 @@ public class BallScript : MonoBehaviour {
 
 	void Update()
 	{
+		if(150 > gameManager.playerOTScore && gameManager.playerOTScore >= 75)
+		{
+			speed = 100f;
+		}
+		if(300 > gameManager.playerOTScore && gameManager.playerOTScore >= 150)
+		{
+			speed = 125f;
+		}
+		if(gameManager.playerOTScore >= 300)
+		{
+			speed = 175f;
+		}
 	}
 	
 	void OnCollisionEnter2D (Collision2D col)
@@ -53,6 +65,7 @@ public class BallScript : MonoBehaviour {
 			if(col.gameObject.name == "RightWall")
 			{
 				IncreaseScore ("playerScore", 10);
+				audioManager.Play ("ScoreSE");
 			}
 
 			if(col.gameObject.name == "LeftWall")

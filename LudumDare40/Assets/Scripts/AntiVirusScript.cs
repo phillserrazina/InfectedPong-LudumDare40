@@ -23,7 +23,6 @@ public class AntiVirusScript : MonoBehaviour {
 
 	private bool boughtAutoUpdater;
 
-	private PlayerScript player;
 	private VirusSpawner virusSpawner;
 	private GameManager gameManager;
 	private AudioManager audioManager;
@@ -32,7 +31,6 @@ public class AntiVirusScript : MonoBehaviour {
 
 	void Start()
 	{
-		player = FindObjectOfType<PlayerScript> ();
 		virusSpawner = FindObjectOfType<VirusSpawner> ();
 		gameManager = FindObjectOfType<GameManager> ();
 		audioManager = FindObjectOfType<AudioManager> ();
@@ -70,15 +68,15 @@ public class AntiVirusScript : MonoBehaviour {
 	{
 		gameManager.playerScore -= fireWallCost;
 
-		virusSpawner.spawnLeastWait += 3;
-		virusSpawner.spawnMostWait += 3;
+		virusSpawner.spawnLeastWait += 6;
+		virusSpawner.spawnMostWait += 10;
 
 		upgradeFirewallButton.SetActive (false);
 
 		yield return new WaitForSeconds(firewallDuration);
 
-		virusSpawner.spawnLeastWait -= 3;
-		virusSpawner.spawnMostWait -= 3;
+		virusSpawner.spawnLeastWait -= 6;
+		virusSpawner.spawnMostWait -= 10;
 
 		upgradeFirewallButton.SetActive (true);
 	}
@@ -129,6 +127,10 @@ public class AntiVirusScript : MonoBehaviour {
 	{
 		if(gameManager.playerScore >= formatCost) 
 		{
+			gameManager.playerScore -= formatCost;
+
+			StartCoroutine (FirewallUpgrade ());
+
 			audioManager.Play ("UpgradeSE");
 
 			GameObject[] allViruses = GameObject.FindGameObjectsWithTag ("Virus");
