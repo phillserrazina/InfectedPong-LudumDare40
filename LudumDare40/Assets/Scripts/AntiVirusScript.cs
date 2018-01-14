@@ -48,6 +48,9 @@ public class AntiVirusScript : MonoBehaviour {
 		Time.timeScale = 1;
 	}
 
+
+	// RAM upgrade, gives the player a 100 RAM boost
+	// for a short period of time.
 	IEnumerator AutoUpdater()
 	{
 		gameManager.playerScore -= updaterCost;
@@ -64,6 +67,9 @@ public class AntiVirusScript : MonoBehaviour {
 	}
 
 
+	// Firewall Upgrade, "Updates the firewall" so that it
+	// takes longer for the viruses to appear, only for a short
+	// period of time.
 	IEnumerator FirewallUpgrade()
 	{
 		gameManager.playerScore -= fireWallCost;
@@ -81,6 +87,9 @@ public class AntiVirusScript : MonoBehaviour {
 		upgradeFirewallButton.SetActive (true);
 	}
 
+
+	// Upgrade that gives the player a little helper, every few
+	// seconds it will delete one of the viruses
 	IEnumerator AddBlock()
 	{
 		gameManager.playerScore -= addBlockCost;
@@ -95,6 +104,8 @@ public class AntiVirusScript : MonoBehaviour {
 		}
 	}
 
+
+	// Buy the RAM upgrade if the player has enough points.
 	public void BuyAutoUpdater ()
 	{
 		if(gameManager.playerScore >= updaterCost) 
@@ -109,6 +120,8 @@ public class AntiVirusScript : MonoBehaviour {
 		}
 	}
 
+
+	// Buy the Firewall upgrade if the player has enough points.
 	public void UpgradeFirewall()
 	{
 		if(gameManager.playerScore >= fireWallCost) 
@@ -123,6 +136,9 @@ public class AntiVirusScript : MonoBehaviour {
 		}
 	}
 
+
+	// Buy the Format upgrade, kills all viruses and gives
+	// a firewall boost.
 	public void KillAllVirus()
 	{
 		if(gameManager.playerScore >= formatCost) 
@@ -146,6 +162,8 @@ public class AntiVirusScript : MonoBehaviour {
 		}
 	}
 
+
+	// Buy the AdBlock upgrade.
 	public void BuyAddBlock()
 	{
 		if(gameManager.playerScore >= addBlockCost)

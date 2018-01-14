@@ -27,6 +27,7 @@ public class VirusPopScript : MonoBehaviour {
 		virusSpawner = FindObjectOfType<VirusSpawner> ();
 		gameManager = FindObjectOfType<GameManager> ();
 
+		// Set virus' health and RAM steal depending on what virus it is.
 		if(this.gameObject.name == "BasicPopUp(Clone)")
 		{
 			this.virusHP = 1;
@@ -56,6 +57,7 @@ public class VirusPopScript : MonoBehaviour {
 		}
 	}
 
+	// Give the RAM back to the player and 3 points.
 	void OnDestroy()
 	{
 		virusSpawner.virusCount--;

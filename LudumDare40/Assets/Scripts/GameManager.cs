@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 
+	// Coroutine that gives the player a point per second
 	IEnumerator IncreaseScoreOT()
 	{
 		while(true) 
@@ -52,6 +53,8 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
+
+	// Save the score.
 	void OnDestroy()
 	{
 		PlayerPrefs.SetInt ("playerOTScore", playerOTScore);

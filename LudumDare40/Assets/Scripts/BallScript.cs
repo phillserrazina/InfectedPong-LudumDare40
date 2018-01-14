@@ -39,6 +39,7 @@ public class BallScript : MonoBehaviour {
 
 	void Update()
 	{
+		// Adjust the ball speed depending on the player's score.
 		if(150 > gameManager.playerOTScore && gameManager.playerOTScore >= 75)
 		{
 			speed = 100f;
@@ -55,11 +56,13 @@ public class BallScript : MonoBehaviour {
 	
 	void OnCollisionEnter2D (Collision2D col)
 	{
+		// Handle Paddle hit
 		if((col.gameObject.name == "LeftPaddle") || (col.gameObject.name == "RightPaddle"))
 		{
 			HandlePaddleHit (col);
 		}
 
+		// Handle Wall hit
 		if((col.gameObject.name == "LeftWall") || (col.gameObject.name == "RightWall"))
 		{
 			if(col.gameObject.name == "RightWall")
