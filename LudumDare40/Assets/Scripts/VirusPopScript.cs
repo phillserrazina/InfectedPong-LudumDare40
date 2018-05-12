@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
+/// <summary>
+/// This is the script that will handle the viruses,
+/// each consume a portion of ram while they're opened, 
+/// it's destroyed once it's closed and the RAM is given back.
+/// </summary>
 public class VirusPopScript : MonoBehaviour {
-
-	// This is the script that will handle the viruses,
-	// each consume a portion of ram while they're opened, 
-	// it's destroyed once it's closed and the RAM is given back.
 
 	// VARIABLES
 

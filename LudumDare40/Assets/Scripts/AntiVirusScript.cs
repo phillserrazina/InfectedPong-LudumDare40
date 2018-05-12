@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Anti virus script.
+/// </summary>
 public class AntiVirusScript : MonoBehaviour {
 
 	// VARIABLES
@@ -39,18 +42,20 @@ public class AntiVirusScript : MonoBehaviour {
 	public void OpenAntiVirusTab()
 	{
 		antiVirusTab.SetActive (true);
-		Time.timeScale = 0;
+		Time.timeScale = 0.0f;
 	}
 
 	public void CloseAntiVirusTab()
 	{
 		antiVirusTab.SetActive (false);
-		Time.timeScale = 1;
+		Time.timeScale = 1.0f;
 	}
 
 
-	// RAM upgrade, gives the player a 100 RAM boost
-	// for a short period of time.
+	/// <summary>
+	/// RAM upgrade, gives the player a 100 RAM boost
+	/// for a short period of time.
+	/// </summary>
 	IEnumerator AutoUpdater()
 	{
 		gameManager.playerScore -= updaterCost;
@@ -65,11 +70,13 @@ public class AntiVirusScript : MonoBehaviour {
 
 		autoUpdaterButton.SetActive (true);
 	}
+		
 
-
-	// Firewall Upgrade, "Updates the firewall" so that it
-	// takes longer for the viruses to appear, only for a short
-	// period of time.
+	/// <summary>
+	/// Firewall Upgrade, "Updates the firewall" so that it
+	/// takes longer for the viruses to appear, only for a short
+	/// period of time.
+	/// </summary>
 	IEnumerator FirewallUpgrade()
 	{
 		gameManager.playerScore -= fireWallCost;

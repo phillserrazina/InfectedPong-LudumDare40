@@ -51,3 +51,6 @@ TagManager:
   - name: PlayerUI
     uniqueID: 1828616937
     locked: 0
+  - name: InFrontOfEverything
+    uniqueID: 3763735377
+    locked: 0

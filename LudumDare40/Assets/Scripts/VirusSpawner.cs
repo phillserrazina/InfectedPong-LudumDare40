@@ -8,6 +8,8 @@ public class VirusSpawner : MonoBehaviour {
 
 	public GameObject[] virusList;
 
+	public bool isSpawning = true;
+
 	public int startWait;
 	public int virusCount = 0;
 
@@ -19,7 +21,7 @@ public class VirusSpawner : MonoBehaviour {
 	private int randomVirusChoice;
 	private int availableVirus;
 
-	private float spawnPosLeast = -150f;
+	private float spawnPosLeast = -100f;
 	private float spawnPosMost = 100f;
 
 	private bool isHarder = false;
@@ -71,15 +73,17 @@ public class VirusSpawner : MonoBehaviour {
 			Vector3 spawnPosition = new Vector3 (Random.Range (spawnPosLeast, spawnPosMost), 
 				Random.Range (spawnPosLeast, spawnPosMost), 0f);
 
-			Instantiate (virusList [randomVirusChoice], spawnPosition, gameObject.transform.rotation);
+			if (this.isSpawning) 
+			{
+				Instantiate (virusList [randomVirusChoice], spawnPosition, gameObject.transform.rotation);
 
-			virusCount++;
+				virusCount++;
 
-			VirusIntensityHandle ();
-			VirusAttack ();
+				VirusIntensityHandle ();
+				// VirusAttack ();
 
-			audioManager.Play ("VirusSE");
-
+				audioManager.Play ("VirusSE");
+			}
 			yield return new WaitForSeconds (spawnWait);
 		}
 	}
@@ -123,7 +127,7 @@ public class VirusSpawner : MonoBehaviour {
 		}
 	}
 
-	void VirusAttack()
+	/*void VirusAttack()
 	{
 		if(Random.value < 0.1f)
 		{
@@ -143,5 +147,5 @@ public class VirusSpawner : MonoBehaviour {
 
 		spawnLeastWait = tempLeastWait;
 		spawnMostWait = tempMostWait;
-	}
+	}*/
 }

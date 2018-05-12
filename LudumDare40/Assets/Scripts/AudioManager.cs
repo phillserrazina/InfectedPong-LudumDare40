@@ -51,7 +51,9 @@ public class AudioManager : MonoBehaviour
 
 				soundButtonOn.SetActive (true);
 				soundButtonOff.SetActive (false);
-			} else {
+			} 
+			else if (!audioIsOn) 
+			{
 				AudioListener.pause = true;
 
 				soundButtonOn.SetActive (false);
@@ -77,14 +79,12 @@ public class AudioManager : MonoBehaviour
 
 	public void MuteAudio()
 	{
-		if (audioIsOn == true) 
-		{
-			audioIsOn = false;
-		}
-		else 
-		{
-			audioIsOn = true;
-		}
+		audioIsOn = false;
+	}
+
+	public void UnmuteAudio()
+	{
+		audioIsOn = true;
 	}
 
 	int boolToInt(bool val)
